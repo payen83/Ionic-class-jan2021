@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">Name</ion-label>
+      <ion-input placeholder="e.g John Smith" [(ngModel)]="person.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select interface="popover" placeholder="Please select" [(ngModel)]="person.gender">
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="male">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Image URL</ion-label>
+      <ion-input placeholder="e.g www.mywebsite.com/image.png" [(ngModel)]="person.image_url"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Date of Birth</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="person.birth_date"></ion-datetime>
+    </ion-item>
+
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button (click)="submit()">Submit</ion-button>
+    <ion-button (click)="reset()">Reset</ion-button>
+
+   
+    <ion-card *ngIf="showCard">
+      <img width="100%" [src]="user.image_url || 'assets/shapes.svg' ">
+      <ion-card-header>
+        <ion-card-title>
+          {{ user.name }}
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{ user.gender }}</p>
+        <p>{{ getAge() }} years old</p>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+
+</ion-content>

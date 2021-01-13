@@ -1,20 +1,38 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      My First App
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/profile">Profile</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">My First App</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="ion-padding">
+    <h1>Welcome to My App</h1>
+    <p>My name is: {{ person_name }}</p>
+    <ion-button expand="block" color="danger" (click)="btnClick()">Click Me</ion-button>
+    
+    <ion-button (click)="profilePage()">
+      <ion-icon slot="start" name="airplane"></ion-icon>
+      Navigate to Profile Page
+    </ion-button>
+
+    <div *ngFor="let person of multiplePerson">
+      <p>{{ person.name }}'s age is {{ person.age }}</p>
+      <p *ngIf="person.gender == 'female' ">
+        {{ person.name }}'s gender is {{ person.gender }}
+      </p>
+    </div> 
+
   </div>
+
 </ion-content>

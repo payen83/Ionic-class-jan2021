@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>{{ articles.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngIf="articles">
+    <img width="100%" [src]="articles.urlToImage">
+
+    <ion-card-header>
+      <ion-card-subtitle>{{ articles.source.name }}</ion-card-subtitle>
+      <ion-card-title>{{ articles.title }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ articles.content }}</p>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

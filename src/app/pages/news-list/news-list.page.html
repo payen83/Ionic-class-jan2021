@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>News</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-searchbar color="dark" showCancelButton="focus" debounce="500" [(ngModel)]="searchText" (ionChange)="onSearch()"></ion-searchbar>
+
+    <ion-card *ngIf="headLine">
+      <ion-card-header>
+        <ion-card-title class="card-title">{{ headLine.title }}</ion-card-title>
+        <img class="news-header-image" [src]="headLine.urlToImage" width="100%">
+      </ion-card-header>
+
+      <ion-card-content class="card-content">
+        <p>{{ headLine.source.name }}</p> <ion-icon name="chatbubble-outline"></ion-icon> <p>144</p>
+      </ion-card-content>
+    </ion-card> 
+
+    <ion-list class="news-list">
+
+      <ion-item *ngFor="let article of newsList; let i=index;" routerLink="/detail/{{ i }}">
+        <ion-label class="ion-text-wrap">
+          <h2>{{ article.title }}</h2>
+          <div class="card-content separate">
+            <p>{{ article.source.name }}</p> <ion-icon slot="left" name="chatbubble-outline"></ion-icon> <p>204</p>
+          </div>
+        </ion-label>
+        <ion-thumbnail slot="end">
+          <img [src]="article.urlToImage" style="border-radius: 10px;">
+        </ion-thumbnail>
+      </ion-item>
+
+    </ion-list>
+
+</ion-content>
